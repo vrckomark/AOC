@@ -1,14 +1,15 @@
 max = 0
-sum = 0
-
+tempSum = 0
+sums = []
 with open("input.txt", "r") as f:
-    inputValue = f.readlines()
-    for line in inputValue:
+    for line in f.readlines():
         if line != "\n":
-            sum += int(line)
+            tempSum += int(line)
         else:
-            if max < sum:
-                max = sum
-            sum = 0
-
-print(max)
+            sums.append(tempSum)
+            if max < tempSum:
+                max = tempSum
+            tempSum = 0
+sums.sort(reverse=True)  # part 2
+print(sum(sums[0:3]))  # part 2
+print(sums[0])  # part 1
